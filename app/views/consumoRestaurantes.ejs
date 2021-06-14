@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP Final</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>RESTAURANTES</h1>
+            <br>
+            <form action="/api/consumo/listarMesas">
+                <p>Elige un restaurante:
+                <select name="id_restaurante" >
+                    <% if (data) { %>
+                        <% for (var j=0; j<data.length; j++) { %>
+                            <option value="<%= data[j].id_restaurante %>"><%= data[j].nombre_restaurante %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+                </p>
+
+                <br>
+                <button type="submit" class="btn btn-primary">Ver Mesas</button>
+            </form>
+        </div>
+      </div>
+    </body>
+</html>

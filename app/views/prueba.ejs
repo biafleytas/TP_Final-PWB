@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>LISTA DE RESERVAS</h1>
+            <br>
+            <form>
+                <p>Elige un restaurante:
+                    <select name="restaurante">
+                    <% if (data) { %>
+                        <% for (var j=0; j<dataRes.length; j++) { %>
+                            <% if (dataRes[j].id_restaurante==restaurante) { %>
+                                <option value="<%= dataRes[j].id_restaurante %>" selected><%= dataRes[j].nombre_restaurante %></option>
+                            <% }else{ %>
+                                <option value="<%= dataRes[j].id_restaurante %>"><%= dataRes[j].nombre_restaurante %></option>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    </select>
+                </p>
+                <p>Elija la fecha de su reserva:
+                    <input type="date" id="fecha" name="fecha" value="<%= fecha %>">
+                </p>
+                <p>Cliente: <input type="text" id="cliente" name="cliente" placeholder="Escriba el nro de cedula" value="<%= cliente %>"/></p>
+                <br>
+                <button type="submit" class="btn btn-primary">Ver</button>
+            </form>
+        </div>
+      </div>
+      <br><br>
+      <div class="container">
+        <table class="table table-bordered table-hover">
+	       <thead class="thead-dark">
+		         <tr>
+			      <th>Restaurante</th>
+                  <th>Cliente</th>
+                  <th>Mesa</th>
+                  <th>Fecha</th>
+                  <th>Horario reservado</th>
+                  <th>Cantidad reservada</th>
+		         </tr>
+	       </thead>
+	       <tbody>
+	            <% if (data) { %>
+                    <% for (var i=0; i<data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].reservaRestaurante.nombre_restaurante %></td>
+                            <td><%= data[i].reservaCliente.nombre_cliente %></td>
+                            <td><%= data[i].reservaMesa.nombre_mesa %></td>
+                            <td><%= data[i].fecha %></td>
+                            <td><%= data[i].reservaRango.rango_horas %></td>
+                            <td><%= data[i].cantidad_solicitada %></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+	      </tbody>
+        </table>
+      <div>
+    </body>
+</html>

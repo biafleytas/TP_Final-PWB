@@ -1,0 +1,152 @@
+      <%    //Recorro las reservas y guardo el id de la mesa reservada              %>
+      <%    var mesasActualmenteReservadas=[];                                      %>
+      <%    if (mesasReservadas){                                                   %>
+      <%        for (var i = 0; i<mesasReservadas.length; i++){                     %>
+      <%            mesasActualmenteReservadas.push(mesasReservadas[i].id_mesa);    %>
+      <%        }                                                                   %>
+      <%    }                                                                       %>
+     <script>
+        window.onload = function()
+        {
+            <% for (var i=0; i<data.length; i++){                                                               %>
+                document.getElementById('<%=data[i].posicion%>').innerHTML='<%= data[i].nombre_mesa %>';
+            <%  if (mesasReservadas){                                                                           %>
+            <%            if ((mesasActualmenteReservadas.includes(data[i].id_mesa))==true){                    %>
+                            document.getElementById('<%=data[i].posicion%>').style.color = '#FF0000';
+            <%            }else{                                                                                %>
+                            document.getElementById('<%=data[i].posicion%>').style.color = '#00FF00';
+            <%            }                                                                                     %>                                                                                        %>
+            <%    }else{                                                                                        %>
+                    document.getElementById('<%=data[i].posicion%>').style.color = '#00FF00';
+            <%    }                                                                                             %>
+            <% }                                                                                                %>
+       }
+      </script>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2</title>
+    </head>
+    <body>
+        <div class="container">
+            <div style="width:10%; float:left"><p id="1,1">1 , 1</p></div>
+            <div style="width:10%; float:left"><p id="1,2">1 , 2</p></div>
+            <div style="width:10%; float:left"><p id="1,3">1 , 3</p></div>
+            <div style="width:10%; float:left"><p id="1,4">1 , 4</p></div>
+            <div style="width:10%; float:left"><p id="1,5">1 , 5</p></div>
+            <div style="width:10%; float:left"><p id="1,6"> 1 , 6</p></div>
+            <div style="width:10%; float:left"><p id="1,7">1 , 7</p></div>
+            <div style="width:10%; float:left"><p id="1,8">1 , 8</p></div>
+            <div style="width:10%; float:left"><p id="1,9">1 , 9</p></div>
+            <div style="width:10%; float:left"><p id="1,10">1 , 10</p></div>
+        </div>
+        <div class="caja_inline">
+            <div style="width:10%; float:left"><p id="2,1">2 , 1</p></div>
+            <div style="width:10%; float:left"><p id="2,2">2 , 2</p></div>
+            <div style="width:10%; float:left"><p id="2,3">2 , 3</p></div>
+            <div style="width:10%; float:left"><p id="2,4">2 , 4</p></div>
+            <div style="width:10%; float:left"><p id="2,5">2 , 5</p></div>
+            <div style="width:10%; float:left"><p id="2,6">2 , 6</p></div>
+            <div style="width:10%; float:left"><p id="2,7">2 , 7</p></div>
+            <div style="width:10%; float:left"><p id="2,8">2 , 8</p></div>
+            <div style="width:10%; float:left"><p id="2,9">2 , 9</p></div>
+            <div style="width:10%; float:left"><p id="2,10">2 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="3,1">3 , 1</p></div>
+            <div style="width:10%; float:left"><p id="3,2">3 , 2</p></div>
+            <div style="width:10%; float:left"><p id="3,3">3 , 3</p></div>
+            <div style="width:10%; float:left"><p id="3,4">3 , 4</p></div>
+            <div style="width:10%; float:left"><p id="3,5">3 , 5</p></div>
+            <div style="width:10%; float:left"><p id="3,6">3 , 6</p></div>
+            <div style="width:10%; float:left"><p id="3,7">3 , 7</p></div>
+            <div style="width:10%; float:left"><p id="3,8">3 , 8</p></div>
+            <div style="width:10%; float:left"><p id="3,9">3 , 9</p></div>
+            <div style="width:10%; float:left"><p id="3,10">3 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="4,1">4 , 1</p></div>
+            <div style="width:10%; float:left"><p id="4,2">4 , 2</p></div>
+            <div style="width:10%; float:left"><p id="4,3">4 , 3</p></div>
+            <div style="width:10%; float:left"><p id="4,4">4 , 4</p></div>
+            <div style="width:10%; float:left"><p id="4,5">4 , 5</p></div>
+            <div style="width:10%; float:left"><p id="4,6">4 , 6</p></div>
+            <div style="width:10%; float:left"><p id="4,7">4 , 7</p></div>
+            <div style="width:10%; float:left"><p id="4,8">4 , 8</p></div>
+            <div style="width:10%; float:left"><p id="4,9">4 , 9</p></div>
+            <div style="width:10%; float:left"><p id="4,10">4 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="5,1">5 , 1</p></div>
+            <div style="width:10%; float:left"><p id="5,2">5 , 2</p></div>
+            <div style="width:10%; float:left"><p id="5,3">5 , 3</p></div>
+            <div style="width:10%; float:left"><p id="5,4">5 , 4</p></div>
+            <div style="width:10%; float:left"><p id="5,5">5 , 5</p></div>
+            <div style="width:10%; float:left"><p id="5,6">5 , 6</p></div>
+            <div style="width:10%; float:left"><p id="5,7">5 , 7</p></div>
+            <div style="width:10%; float:left"><p id="5,8">5 , 8</p></div>
+            <div style="width:10%; float:left"><p id="5,9">5 , 9</p></div>
+            <div style="width:10%; float:left"><p id="5,10">5 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="6,1">6 , 1</p></div>
+            <div style="width:10%; float:left"><p id="6,2">6 , 2</p></div>
+            <div style="width:10%; float:left"><p id="6,3">6 , 3</p></div>
+            <div style="width:10%; float:left"><p id="6,4">6 , 4</p></div>
+            <div style="width:10%; float:left"><p id="6,5">6 , 5</p></div>
+            <div style="width:10%; float:left"><p id="6,6">6 , 6</p></div>
+            <div style="width:10%; float:left"><p id="6,7">6 , 7</p></div>
+            <div style="width:10%; float:left"><p id="6,8">6 , 8</p></div>
+            <div style="width:10%; float:left"><p id="6,9">6 , 9</p></div>
+            <div style="width:10%; float:left"><p id="6,10">6 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="7,1">7 , 1</p></div>
+            <div style="width:10%; float:left"><p id="7,2">7 , 2</p></div>
+            <div style="width:10%; float:left"><p id="7,3">7 , 3</p></div>
+            <div style="width:10%; float:left"><p id="7,4">7 , 4</p></div>
+            <div style="width:10%; float:left"><p id="7,5">7 , 5</p></div>
+            <div style="width:10%; float:left"><p id="7,6">7 , 6</p></div>
+            <div style="width:10%; float:left"><p id="7,7">7 , 7</p></div>
+            <div style="width:10%; float:left"><p id="7,8">7, 8</p></div>
+            <div style="width:10%; float:left"><p id="7,9">7 , 9</p></div>
+            <div style="width:10%; float:left"><p id="7,10">7 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="8,1">8 , 1</p></div>
+            <div style="width:10%; float:left"><p id="8,2">8 , 2</p></div>
+            <div style="width:10%; float:left"><p id="8,3">8 , 3</p></div>
+            <div style="width:10%; float:left"><p id="8,4">8 , 4</p></div>
+            <div style="width:10%; float:left"><p id="8,5">8 , 5</p></div>
+            <div style="width:10%; float:left"><p id="8,6">8 , 6</p></div>
+            <div style="width:10%; float:left"><p id="8,7">8 , 7</p></div>
+            <div style="width:10%; float:left"><p id="8,8">8 , 8</p></div>
+            <div style="width:10%; float:left"><p id="8,9">8 , 9</p></div>
+            <div style="width:10%; float:left"><p id="8,10">8 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="9,1">9 , 1</p></div>
+            <div style="width:10%; float:left"><p id="9,2">9 , 2</p></div>
+            <div style="width:10%; float:left"><p id="9,3">9 , 3</p></div>
+            <div style="width:10%; float:left"><p id="9,4">9 , 4</p></div>
+            <div style="width:10%; float:left"><p id="9,5">9 , 5</p></div>
+            <div style="width:10%; float:left"><p id="9,6">9 , 6</p></div>
+            <div style="width:10%; float:left"><p id="9,7">9 , 7</p></div>
+            <div style="width:10%; float:left"><p id="9,8">9 , 8</p></div>
+            <div style="width:10%; float:left"><p id="9,9">9 , 9</p></div>
+            <div style="width:10%; float:left"><p id="9,10">9 , 10</p></div>
+        </div>
+        <div>
+            <div style="width:10%; float:left"><p id="10,1">10 , 1</p></div>
+            <div style="width:10%; float:left"><p id="10,2">10 , 2</p></div>
+            <div style="width:10%; float:left"><p id="10,3">10 , 3</p></div>
+            <div style="width:10%; float:left"><p id="10,4">10 , 4</p></div>
+            <div style="width:10%; float:left"><p id="10,5">10 , 5</p></div>
+            <div style="width:10%; float:left"><p id="10,6">10 , 6</p></div>
+            <div style="width:10%; float:left"><p id="10,7">10 , 7</p></div>
+            <div style="width:10%; float:left"><p id="10,8">10 , 8</p></div>
+            <div style="width:10%; float:left"><p id="10,9">10 , 9</p></div>
+            <div style="width:10%; float:left"><p id="10,10">10 , 10</p></div>
+        </div>
+    </body>
+</html>

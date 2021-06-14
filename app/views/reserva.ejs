@@ -1,0 +1,87 @@
+      <%    //Recorro las reservas para quitar las mesas                            %>
+      <%    var mesasActualmenteReservadas=[];                                      %>
+      <%    if (mesasReservadas){                                                   %>
+      <%        for (var i = 0; i<mesasReservadas.length; i++){                     %>
+      <%            mesasActualmenteReservadas.push(mesasReservadas[i].id_mesa);    %>
+      <%        }                                                                   %>
+      <%    }                                                                       %>
+      <%    //Recorro las mesas para quitar las reservadas                          %>
+      <%    var mesasFiltradas=[];                                                  %>
+      <%    if (mesasTotales){                                                      %>
+      <%        for (var j = 0; j<mesasTotales.length; j++){                        %>
+      <%            if ((mesasActualmenteReservadas.includes(mesasTotales[j].id_mesa))==false){         %>
+      <%                mesasFiltradas.push(mesasTotales[j]);                                           %>
+      <%            }                                                                                   %>
+      <%        }                                                                                       %>
+      <%    }                                                                                           %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>RESERVAR MESA</h1>
+            <br>
+            <form>
+                <p>Elige un restaurante:
+                    <select name="id_restaurante">
+                    <% if (dataRes) { %>
+                        <% for (var j=0; j<dataRes.length; j++) { %>
+                            <% if (dataRes[j].id_restaurante==sess.restauranteId) { %>
+                                <option value="<%= dataRes[j].id_restaurante %>" selected><%= dataRes[j].nombre_restaurante %></option>
+                            <% }else{ %>
+                                <option value="<%= dataRes[j].id_restaurante %>"><%= dataRes[j].nombre_restaurante %></option>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    </select>
+                </p>
+                <p>Elija la fecha de su reserva:
+                    <input type="date" id="fecha" name="fecha" value="<%= sess.fecha %>">
+                </p>
+                <p>Elija la hora de su reserva:
+                    <select name="id_rango">
+                        <% if (dataRango) { %>
+                            <% for (var j=0; j<dataRango.length; j++) { %>
+                                <option value="<%= dataRango[j].id_rango %>"><%= dataRango[j].rango_horas %></option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                </p>
+                <p>Cliente: <input type="text" name="cliente" placeholder="Escriba el nro de cedula" value="<%= sess.cliente %>"/></p>
+                <br>
+                <button type="submit" class="btn btn-primary">Ver Mesas</button>
+            </form>
+        </div>
+      </div>
+      <br><br>
+      <div class="container">
+        <table class="table table-bordered table-hover">
+	       <thead class="thead-dark text-center">
+		    <tr>
+			    <th>Mesa</th>
+                <th>Planta</th>
+                <th>Capacidad</th>
+                <th>Elija la mesa</th>
+		    </tr>
+	       </thead>
+	       <tbody>
+	       <% if (data) { %>
+            <% for (var i=0; i<mesasFiltradas.length; i++) { %>
+                <tr>
+                    <td><%= mesasFiltradas[i].nombre_mesa %></td>
+                    <td><%= mesasFiltradas[i].planta %></td>
+                    <td><%= mesasFiltradas[i].capacidad %></td>
+                    <td><a href="registroCliente/<%= mesasFiltradas[i].id_mesa %>?cantidad=<%= mesasFiltradas[i].capacidad %>" class="btn btn-dark btn-block">Reservar</a></td>
+                </tr>
+            <% } %>
+           <% } %>
+	      </tbody>
+        </table>
+      </div>
+    </body>
+</html>

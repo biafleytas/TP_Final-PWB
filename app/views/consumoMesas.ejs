@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP Final</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>MESAS RESTAURANTE</h1>
+            <br>
+            <form>
+                <p>Elige un restaurante:
+                    <select name="id_restaurante">
+                    <% if (dataRes) { %>
+                        <% for (var j=0; j<dataRes.length; j++) { %>
+                            <% if (dataRes[j].id_restaurante==sess.restauranteId) { %>
+                                <option value="<%= dataRes[j].id_restaurante %>" selected><%= dataRes[j].nombre_restaurante %></option>
+                            <% }else{ %>
+                                <option value="<%= dataRes[j].id_restaurante %>"><%= dataRes[j].nombre_restaurante %></option>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    </select>
+                </p>
+                <br>
+                <button type="submit" class="btn btn-primary">Ver Mesas</button>
+            </form>
+        </div>
+      </div>
+      <br><br>
+      <div class="container">
+        <table class="table table-bordered table-hover">
+	       <thead class="thead-dark text-center">
+		    <tr>
+			    <th>Mesa</th>
+                <th>Planta</th>
+                <th>Capacidad</th>
+                <th>Elija la mesa</th>
+		    </tr>
+	       </thead>
+	       <tbody>
+	       <% if (data) { %>
+            <% for (var i=0; i<data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].nombre_mesa %></td>
+                    <td><%= data[i].planta %></td>
+                    <td><%= data[i].capacidad %></td>
+                    <td><a href="consumoMesa?id_mesa=<%= data[i].id_mesa %>" class="btn btn-dark btn-block">Agregar Consumo</a></td>
+                </tr>
+            <% } %>
+           <% } %>
+	      </tbody>
+        </table>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+     <script>
+        window.onload = function()
+        {
+          var fecha = new Date(); //Fecha actual
+          var mes = fecha.getMonth()+1; //obteniendo mes
+          var dia = fecha.getDate(); //obteniendo dia
+          var ano = fecha.getFullYear(); //obteniendo año
+          if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+          if(mes<10)
+            mes='0'+mes //agrega cero si el menor de 10
+          document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
+
+        }
+      </script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP2</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>LISTA DE RESERVAS</h1>
+            <br>
+            <form action="/api/reserva">
+                <p>Elige un restaurante:
+                <select name="restaurante">
+                    <% if (data) { %>
+                        <% for (var j=0; j<dataRes.length; j++) { %>
+                            <option value="<%= dataRes[j].id_restaurante %>"><%= dataRes[j].nombre_restaurante %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+                </p>
+                <p>Elija la fecha de su reserva:
+                    <input type="date" id="fecha" name="fecha">
+                </p>
+                <p>Cliente: <input type="text" name="cliente" placeholder="Escriba el nro de cedula"/></p>
+                <br>
+                <button type="submit" class="btn btn-primary">Ver</button>
+            </form>
+        </div>
+      </div>
+      <br><br>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TP Final</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="col-md-5">
+        <div class="card-body">
+            <h1>LISTA DE CONSUMICION</h1>
+            <br>
+            <form action="/api/consumo/agregarDetalle">
+                <p>Elige un cliente:
+                    <select name="id_cliente">
+                    <% for (var j=0; j<cliente.length; j++) { %>
+                        <% if (cliente[j].id_cliente==sess.clienteID) { %>
+                            <option value="<%= cliente[j].id_cliente %>" selected><%= cliente[j].nombre_cliente %></option>
+                        <% }else{ %>
+                            <option value="<%= cliente[j].id_cliente %>"><%= cliente[j].nombre_cliente %></option>
+                        <% } %>
+                    <% } %>
+                    </select>
+                </p>
+                <br>
+                <a href="/api/consumo/cliente" class="btn btn-dark btn-block">Agregar Cliente</a>
+                <br>
+                <p>Producto:
+                    <select name="id_producto">
+                        <% for (var j=0; j<producto.length; j++) { %>
+                            <option value="<%= producto[j].id_producto %>"><%= producto[j].nombre_producto %></option>
+                        <% } %>
+                    </select>
+                </p>
+                <p>Cantidad: <input type="text" name="cantidad" value="1"/></p>
+                <br>
+                <button type="submit" class="btn btn-primary">Agregar Detalle</button>
+            </form>
+        </div>
+      </div>
+       <br><br>
+    <% if (data.length!=0) { %>
+       <div class="container">
+         <table class="table table-bordered table-hover">
+ 	       <thead class="thead-dark text-center">
+ 		    <tr>
+ 			    <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Sub Total</th>
+ 		    </tr>
+ 	       </thead>
+ 	       <tbody>
+ 	            <% var suma = 0; %>
+	            <% if (data) { %>
+                    <% for (var i=0; i<data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].detalleProducto.nombre_producto %></td>
+                            <td><%= data[i].cantidad %></td>
+                            <td><%= data[i].detalleProducto.precio * data[i].cantidad %></td>
+
+                            <% suma = suma + data[i].detalleProducto.precio * data[i].cantidad; %>
+                        </tr>
+                    <% } %>
+                <% } %>
+ 	      </tbody>
+ 	      <tfoot>
+ 	        <tr>
+                <td>TOTAL</td>
+                <td></td>
+                <td><%= suma %></td>
+            </tr>
+          </tfoot>
+         </table>
+         <a href="cerrarMesa?total_consumo=<%= suma %>" class="btn btn-dark btn-block">Finalizar</a>
+         <br>
+         <a href="listado/" class="btn btn-dark btn-block">Salir</a>
+       </div>
+    <% } %>
+    </body>
+</html>
